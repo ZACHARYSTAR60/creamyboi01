@@ -9,9 +9,6 @@ public class Stats  {
     private int wisdom;
     private int constitution;
     private int charisma;
-    private String type;
-    private String race;
-    private int totalbonus;
     
     public int getStr(){
         return strength;}
@@ -25,8 +22,6 @@ public class Stats  {
         return constitution;}
     public int getChar(){
         return charisma;}
-    public String getTyp(){
-        return type;}
     
     public void setStr(int Str){
         strength=Str;}
@@ -40,8 +35,7 @@ public class Stats  {
         constitution=Cons;}
     public void setChar(int Char){
         charisma=Char;}
-    public void setType(String typ){
-        type=typ;}
+  
     
     
     //Constructors
@@ -62,9 +56,11 @@ public class Stats  {
         charisma=getRandoStats();
         
     }
+    
+    //4d6 drop the lowest roll 
     public int getRandoStats(){ 
         int[] rand={(int)(Math.random()*6+1),(int)(Math.random()*6+1),(int)(Math.random()*6+1),(int)(Math.random()*6+1)};
-        int min = 10;
+        int min = 20;
         int pos = 0;
         for(int x =0; x < rand.length; x++)
         {
@@ -83,21 +79,21 @@ public class Stats  {
         return sum;
     }
     
-    public String getType(){
-        if (strength > inteligence && wisdom >=10)
-            type= "Fighter";
-        else if( strength > inteligence && inteligence < 10)
-            type= "Barbarian";
-        return type;
-    }
-   
+//    public String getType(){
+//        if (strength > inteligence && wisdom >=10)
+//            type= "Fighter";
+//        else if( strength > inteligence && inteligence < 10)
+//            type= "Barbarian";
+//        return type;
+//    }
+//   
    
    //OOPS SORRY BUT LETS TRY THIS SHIT OUT 7/9/2018 ZACH WONG
     
     public String toString(){
        String ret= "My Strength is " + strength +" My inteligence is " + inteligence + " My dexterity is " + dexterity + " My wisdom is " + wisdom + " My constittution is " + constitution + " My charisma is " + charisma;
-       String acc= ", My race is " + determineRace(race) + ", My total Stat bonus is " + addRaceBonus(totalbonus);
-       return ret+acc;
+       //String acc= ", My race is " + determineRace(race) + ", My total Stat bonus is " + addRaceBonus(totalbonus);
+       return ret;
    }
        
       
