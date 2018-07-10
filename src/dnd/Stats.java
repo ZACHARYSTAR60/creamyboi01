@@ -79,14 +79,17 @@ public class Stats  {
         return sum;
     }
     
-//    public String getType(){
-//        if (strength > inteligence && wisdom >=10)
-//            type= "Fighter";
-//        else if( strength > inteligence && inteligence < 10)
-//            type= "Barbarian";
-//        return type;
-//    }
-//   
+    public String getOptimalType(){
+        if (strength > inteligence && wisdom >=10)
+            return "Fighter";
+        else if( strength > inteligence && inteligence < 10)
+            return "Barbarian";
+        else if (inteligence > strength && wisdom > 10)
+            return "Wizard";
+        else
+            return "Daddy";
+    }
+   
    
    //OOPS SORRY BUT LETS TRY THIS SHIT OUT 7/9/2018 ZACH WONG
     
