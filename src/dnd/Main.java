@@ -9,7 +9,7 @@ public class Main {
       Stats jeferey= new Stats();
         System.out.println(jeferey);
         System.out.println(jeferey.getType());
-        system.out.println("kachow");
+        System.out.println("kachow");
       
     }
 }
