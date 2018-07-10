@@ -38,6 +38,10 @@ public class Character {
         weight=wght;}
     public void setSex(char sexy){
         sex=sexy;}
+    public void changeStat(String statType, int changeAmount){
+            stats.changeStat(statType, changeAmount);
+    }
+    
     
     //constructors
     
@@ -49,7 +53,15 @@ public class Character {
         sex=mySex;
     }
     public Character(){
-        stats=
+        stats= new Stats();
+        System.out.println("old stats before race modifieres " + stats.toString());
+        race = new Race("Elvish");  //NEEDS TO BE CHANGED
+        race.addRaceBonus(this);
+        System.out.println("new stats after race modifieres " + stats.toString());
+        weight = 150;  //ALL NEEDS CHANGING
+        height = 5.10;
+        sex = 'm';
+                
     }
     
     

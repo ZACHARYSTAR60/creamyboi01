@@ -35,7 +35,24 @@ public class Stats  {
         constitution=Cons;}
     public void setChar(int Char){
         charisma=Char;}
-  
+    
+    
+    
+  public void changeStat(String statType, int changeAmount){
+        if (statType == "strength")
+            strength += changeAmount;
+        else if (statType == "inteligence")
+            inteligence += changeAmount;
+        else if (statType == "dexterity")
+            dexterity += changeAmount;
+        else if (statType == "wisdom")
+            wisdom += changeAmount;
+        else if (statType == "constitution")
+            constitution += changeAmount;
+        else if (statType == "charisma")
+            charisma += changeAmount;
+        
+    }
     
     
     //Constructors

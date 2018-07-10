@@ -26,11 +26,20 @@ public class Race {
     public void setBonus(int Bonus){
         totalbonus=Bonus;}
     
+    //constructor
+    public Race()
+    {
+        race = randomRace();
+    }
+    
+    public Race (String desieredRace)
+    {
+        race = desieredRace;
+    }
+    
   
-    public int RandomRace(){
-         int Me= (int)(Math.random()* 100 +1);
-        return Me;}
-    public String determineRace(String race1){
+    
+    public String randomRace(){
         int x= (int)(Math.random()* 100 +1);
         if(x <20)
             race="human";
@@ -53,41 +62,41 @@ public class Race {
       return race;
     }
     
-    public int addRaceBonus(int bonus1){
+    public int addRaceBonus(Character player){
         int totalbonus=0;
         if(race.equals("Half-orc")){
-            strength+=2;
-            constitution+=1;
+            player.changeStat("strength", 2);
+            player.changeStat("constitution", 1);
             totalbonus=3;
         }
         if(race.equals("Elvish")){
-            dexterity+=2;
+            player.changeStat("dexterity", 2);
             totalbonus=2;
         }
         if (race.equals("human")){
-            strength+=1;
-            dexterity+=1;
-            inteligence+=1;
-            constitution+=1;
-            charisma+=1;
-            wisdom+=1;
+            player.changeStat("strength", 1);
+            player.changeStat("dexterity", 1);
+            player.changeStat("inteligence", 1);
+            player.changeStat("constitution", 1);
+            player.changeStat("charisma", 1);
+            player.changeStat("wisdom", 1);
             totalbonus=6;
         }
         if (race.equals("gnomish")){
-            inteligence+=2;
+            player.changeStat("inteligence", 2);
             totalbonus=2;
         }
         if(race.equals("Dwarvish")){
-            constitution+=2;
+            player.changeStat("constitution", 2);
             totalbonus=2;
         }
         if(race.equals("halfling")){
-            dexterity+=2;
+            player.changeStat("dexterity", 2);
             totalbonus=2;
         }
         if(race.equals("dragonborn")){
-            charisma+=1;
-            strength+=2;
+            player.changeStat("charisma", 1);
+            player.changeStat("strength", 2);
             totalbonus=3;
         }
         
