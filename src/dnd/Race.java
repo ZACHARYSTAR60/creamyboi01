@@ -215,9 +215,6 @@ public class Race {
         return "DID NOT MATCH";
     }
     
-    
-    
-    
     public void addDarkVision(Character player){
         if(race.equals("Half-orc")){
             player.setDarkVisionDistance(60, false);
@@ -243,6 +240,43 @@ public class Race {
         else if(race.equals("tiefling")){
             player.setDarkVisionDistance(60, false);
         }
+    }
+    public int determineWeight(){
+        int x=(int)(Math.random()*250);
+        if(race.equals("half-orc"))
+            x+=100;
+        else if(race.equals("half-elf"))
+            x-=50;
+        else if(race.equals("halfling"))
+            x-=100;
+        else if(race.equals("dwarf"))
+            x+=50;
+        else if(race.equals("gnome"))
+            x-=100;
+        else if(race.equals("elf"))
+            x-=25;
+        else
+            x+=0;
+        return x;
+    }
+    public double determineHeight(){
+        double x= (double)(Math.random()*5.00);
+        if(race.equals("half-orc"))
+            x+=2.00;
+        else if(race.equals("half-elf"))
+            x-=.50;
+        else if(race.equals("halfling"))
+            x-=2.10;
+        else if(race.equals("dwarf"))
+            x-=2.00;
+        else if(race.equals("gnome"))
+            x-=1.00;
+        else if(race.equals("elf"))
+            x+=2.5;
+        else
+            x+=0;
+        return x;
+        
     }
     
     
