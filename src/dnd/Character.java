@@ -95,9 +95,10 @@ public class Character {
         System.out.println("New stats after race modifieres " + "\n" + " " + stats.toString());
         
         System.out.println("OUR recommendation for the class you should play, based on your stats is " +stats.getOptimalClass());
-        weight = 150;  //ALL NEEDS CHANGING
-        height = 5.10;
+        weight = this.getRace().determineWeight();  //ALL NEEDS CHANGING
+        height = this.getRace().determineHeight();
         sex = 'm';
+        System.out.println("Here are some facts about your chacter:  " + weight + " " + height + " " + sex);
                 
     }
     
