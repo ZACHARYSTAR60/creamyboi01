@@ -82,13 +82,13 @@ public class Race {
             else
                 subrace="dark-elf";
         }
-        if(race.equals("dwarf")){
+        else if(race.equals("dwarf")){
             if(x>50)
                 subrace="mountain-dwarf";
             else
                 subrace="hill-dwarf";
         }
-        if(race.equals("gnome")){
+        else if(race.equals("gnome")){
             if(x>50)
                 subrace="deep-gnome";
             else
@@ -253,7 +253,7 @@ public class Race {
         if(subrace.equals("none"))
             return ret;
         else
-            ret+="my subrace is " + subrace;
+            ret+=" my subrace is " + subrace;
         return ret;
     }
 }
