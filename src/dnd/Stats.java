@@ -120,6 +120,8 @@ public class Stats  {
             return "Monk";
         else if( intelligence>strength && charisma>wisdom)
             return "Sorcerer";
+        else if(strength>wisdom && strength >intelligence && strength> dexterity)
+            return "Fighter";
                    
         else
             return "Daddy";
