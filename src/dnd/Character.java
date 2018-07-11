@@ -80,7 +80,7 @@ public class Character {
     public Character(){
         stats= new Stats();
         System.out.println("old stats before race modifieres " + stats.toString());
-        race = new Race();
+        race = new Race("elvish", "high-elf");
         System.out.println("My race is " + race.toString());
         race.addRaceBonus(this);
         System.out.println("new stats after race modifieres " + stats.toString());

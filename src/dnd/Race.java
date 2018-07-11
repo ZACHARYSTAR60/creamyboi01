@@ -110,7 +110,7 @@ public class Race {
             if(subrace.equals("wood-elf"))
                 player.changeStat("wisdom",1);
             else if(subrace.equals("high-elf"))
-                player.changeStat("inteligence",1);
+                player.changeStat("intelligence",1);
             else
                 player.changeStat("charisma",1);
             
@@ -118,14 +118,14 @@ public class Race {
         else if (race.equals("human")){
             player.changeStat("strength", 1);
             player.changeStat("dexterity", 1);
-            player.changeStat("inteligence", 1);
+            player.changeStat("intelligence", 1);
             player.changeStat("constitution", 1);
             player.changeStat("charisma", 1);
             player.changeStat("wisdom", 1);
             
         }
         else if (race.equals("gnome")){
-            player.changeStat("inteligence", 2);
+            player.changeStat("intelligence", 2);
             if(subrace.equals("rock-gnome")){
                 player.changeStat("constitution",1);}
             else if(subrace.equals("deep-gnome")){

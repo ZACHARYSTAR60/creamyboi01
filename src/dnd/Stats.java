@@ -4,7 +4,7 @@ package dnd;
 
 public class Stats  {
     private int strength;
-    private int inteligence;
+    private int intelligence;
     private int dexterity;
     private int wisdom;
     private int constitution;
@@ -13,7 +13,7 @@ public class Stats  {
     public int getStr(){
         return strength;}
     public int getInt(){
-        return inteligence;}
+        return intelligence;}
     public int getDex(){
         return dexterity;}
     public int getWis(){
@@ -26,7 +26,7 @@ public class Stats  {
     public void setStr(int Str){
         strength=Str;}
     public void setInt(int Int){
-        inteligence=Int;}
+        intelligence=Int;}
     public void setDex(int Dex){
         dexterity=Dex;}
     public void setWis(int Wis){
@@ -43,8 +43,8 @@ public class Stats  {
       
         if ("strength".equals(statTypeMatched))
             strength += changeAmount;
-        else if ("inteligence".equals(statTypeMatched))
-            inteligence += changeAmount;
+        else if ("intelligence".equals(statTypeMatched))
+            intelligence += changeAmount;
         else if ("dexterity".equals(statTypeMatched))
             dexterity += changeAmount;
         else if ("wisdom".equals(statTypeMatched))
@@ -60,7 +60,7 @@ public class Stats  {
     //Constructors
     public Stats (int myStr, int myInt, int myDex, int myWis, int myCons, int myChar){
         strength=myStr;
-        inteligence=myInt;
+        intelligence=myInt;
         dexterity=myDex;
         wisdom=myWis;
         constitution=myCons;
@@ -69,7 +69,7 @@ public class Stats  {
     
     public Stats(){
         strength=getRandoStats();
-        inteligence=getRandoStats();
+        intelligence=getRandoStats();
         dexterity=getRandoStats();
         wisdom=getRandoStats();
         constitution=getRandoStats();
@@ -100,13 +100,13 @@ public class Stats  {
     }
     
     public String getOptimalClass(){
-        if (strength > inteligence && wisdom >=10)
+        if (strength > intelligence && wisdom >=10)
             return "Fighter";
-        else if( strength > inteligence && inteligence < 10)
+        else if( strength > intelligence && intelligence < 10)
             return "Barbarian";
-        else if (inteligence > strength && wisdom > 10)
+        else if (intelligence > strength && wisdom > 10)
             return "Wizard";
-        else if( dexterity>strength && inteligence>wisdom)
+        else if( dexterity>strength && intelligence>wisdom)
             return "Rouge";
         else if( wisdom>strength && constitution>dexterity)
             return "Cleric";
@@ -114,11 +114,11 @@ public class Stats  {
             return "Bard";
         else if( dexterity>strength && wisdom>charisma)
             return "Ranger";
-        else if( charisma>wisdom && inteligence> dexterity)
+        else if( charisma>wisdom && intelligence> dexterity)
             return "Warlock";
-        else if( dexterity>strength && wisdom>inteligence)
+        else if( dexterity>strength && wisdom>intelligence)
             return "Monk";
-        else if( inteligence>strength && charisma>wisdom)
+        else if( intelligence>strength && charisma>wisdom)
             return "Sorcerer";
                    
         else
@@ -139,11 +139,12 @@ public class Stats  {
         else if (toMatch.substring(0, 2).toLowerCase().equals("co"))
             return "constitution";
         else if (toMatch.substring(0, 1).toLowerCase().equals("i"))
-            return "intelegence";
+            return "intelligence";
         else if (toMatch.substring(0, 1).toLowerCase().equals("w"))
             return "wisdom";
         else if (toMatch.substring(0, 2).toLowerCase().equals("ch"))
             return "charisma";
+        System.out.println("ERROR IN MATCH TEXT TO STAT");
         return "DID NOT MATCH";
     }
    
@@ -152,7 +153,7 @@ public class Stats  {
     
     @Override
     public String toString(){
-       String ret= "My Strength is " + strength +" My inteligence is " + inteligence + " My dexterity is " + dexterity + " My wisdom is " + wisdom + " My constittution is " + constitution + " My charisma is " + charisma;
+       String ret= "My Strength is " + strength +" My intelligence is " + intelligence + " My dexterity is " + dexterity + " My wisdom is " + wisdom + " My constittution is " + constitution + " My charisma is " + charisma;
        return ret;
    }
        
