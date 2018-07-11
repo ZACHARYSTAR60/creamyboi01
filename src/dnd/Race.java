@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author Joseph
  */
 public class Race {
-    public static final String[] RACES = {"dragonborn", "dwarf", "elvish", "gnome", "half-elf", "half-orc", "halfling", "human", "tiefling"};
+    public static final String[] RACES = {"dragonborn", "dwarf", "elf", "gnome", "half-elf", "half-orc", "halfling", "human", "tiefling"};
     //fields
     private String race;
     private int totalbonus;
@@ -63,7 +63,7 @@ public class Race {
         if(x>=60 && x<70)
             return "dwarf";
         if(x>=70 && x<85)
-            return "elvish";
+            return "elf";
         if(x>=85 && x<90)
             return "gnome";
         if(x>=90 && x<91)
@@ -74,7 +74,7 @@ public class Race {
     }
     public String randomSubRace(){
         int x= (int)(Math.random()*100);
-        if(race.equals("elvish")){
+        if(race.equals("elf")){
             if(x<=33)
                 subrace="wood-elf";
             else if(x>33 && x<=66)
@@ -105,7 +105,7 @@ public class Race {
             player.changeStat("constitution", 1);
             
         }
-        else if(race.equals("elvish")){
+        else if(race.equals("elf")){
             player.changeStat("dexterity", 2);
             if(subrace.equals("wood-elf"))
                 player.changeStat("wisdom",1);
@@ -190,7 +190,7 @@ public class Race {
     public static String matchTextToRace(String toMatch)
     {
         if (toMatch.substring(0, 2).toLowerCase().equals("el"))
-            return "elvish";
+            return "elf";
         else if (toMatch.substring(0, 2).toLowerCase().equals("dr"))
             return "dragonborn";
         else if (toMatch.substring(0, 2).toLowerCase().equals("dw"))
@@ -219,7 +219,7 @@ public class Race {
         if(race.equals("Half-orc")){
             player.setDarkVisionDistance(60, false);
         }
-        else if(race.equals("elvish")){
+        else if(race.equals("elf")){
             player.setDarkVisionDistance(60, false);
         }
         else if (race.equals("human")){
@@ -241,41 +241,46 @@ public class Race {
             player.setDarkVisionDistance(60, false);
         }
     }
+    
+    
     public int determineWeight(){
-        int x=(int)(Math.random()*250);
+        int ret = 0;
         if(race.equals("half-orc"))
-            x+=100;
+            ret = 140 * Dice.roll("2d6");
         else if(race.equals("half-elf"))
-            x-=50;
+            ret = 110 * Dice.roll("2d4");
         else if(race.equals("halfling"))
-            x-=100;
+            ret = 35;
         else if(race.equals("dwarf"))
-            x+=50;
+            ret = 120 * Dice.roll("2d6");
         else if(race.equals("gnome"))
-            x-=100;
+            ret = 35;
         else if(race.equals("elf"))
-            x-=25;
-        else
-            x+=0;
-        return x;
+            ret = 90 * Dice.roll("1d4");
+        else //human
+            ret = 110 * Dice.roll("2d4");
+        return ret;
     }
+    
+    
     public double determineHeight(){
-        double x= (double)(Math.random()*8.00 +2.00);
+        int inches = 0;
         if(race.equals("half-orc"))
-            x+=2.00;
+            inches = 58 + Dice.roll("2d10");
         else if(race.equals("half-elf"))
-            x-=.50;
+            inches = 57 + Dice.roll("2d8");
         else if(race.equals("halfling"))
-            x-=2.10;
+            inches = 31 + Dice.roll("2d4");
         else if(race.equals("dwarf"))
-            x-=2.00;
+            inches = 48 + Dice.roll("2d4");
         else if(race.equals("gnome"))
-            x-=1.00;
+            inches = 35 + Dice.roll("2d4");
         else if(race.equals("elf"))
-            x+=2.5;
-        else
-            x+=0;
-        return x;
+            inches = 54 + Dice.roll("2d8");
+        else //human
+            inches = 56 + Dice.roll("2d10");
+        double ret = (inches / 12) + ((inches % 12)/100.0);
+        return ret;
         
     }
     

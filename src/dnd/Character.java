@@ -95,7 +95,7 @@ public class Character {
     public Character(){
         stats= new Stats();
         System.out.println("Old stats before race modifieres:"  + "\n" + " " + stats.toString());
-        race = new Race("elvish", "high-elf");
+        race = new Race("elf", "high-elf");
         System.out.println(" My race is " + race.toString());
         race.addRaceBonus(this);
         System.out.println("New stats after race modifieres " + "\n" + " " + stats.toString());
@@ -105,7 +105,7 @@ public class Character {
         weight = this.getRace().determineWeight();  //ALL NEEDS CHANGING
         height = this.getRace().determineHeight();
         sex = 'm';
-        System.out.println("Here are some facts about your chacter:  " + weight + " " + height + " " + String.valueOf(sex).toUpperCase());
+        System.out.println("Here are some facts about your chacter:  " + weight + "lbs " + height + " " + String.valueOf(sex).toUpperCase());
         Role.addStartingEquipment(this);
                 
     }
