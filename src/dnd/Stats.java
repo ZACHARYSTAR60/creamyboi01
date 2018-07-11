@@ -106,6 +106,21 @@ public class Stats  {
             return "Barbarian";
         else if (inteligence > strength && wisdom > 10)
             return "Wizard";
+        else if( dexterity>strength && inteligence>wisdom)
+            return "Rouge";
+        else if( wisdom>strength && constitution>dexterity)
+            return "Cleric";
+        else if( charisma> strength && dexterity > constitution)
+            return "Bard";
+        else if( dexterity>strength && wisdom>charisma)
+            return "Ranger";
+        else if( charisma>wisdom && inteligence> dexterity)
+            return "Warlock";
+        else if( dexterity>strength && wisdom>inteligence)
+            return "Monk";
+        else if( inteligence>strength && charisma>wisdom)
+            return "Sorcerer";
+                   
         else
             return "Daddy";
     }
