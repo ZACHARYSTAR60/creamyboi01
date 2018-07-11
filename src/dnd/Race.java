@@ -203,11 +203,11 @@ public class Race {
                 return "half-elf";
             else if (toMatch.substring(0,6).toLowerCase().equals("half-o"))
                 return "half-orc";
+            else if (toMatch.substring(0, 5).toLowerCase().equals("halfl"))
+                return "halfling";
             else
                 System.out.println("ERROR IN MATCH TEXT TO RACE METHOD");
         }
-        else if (toMatch.substring(0, 2).toLowerCase().equals("ha"))
-            return "halfling";
         else if (toMatch.substring(0, 2).toLowerCase().equals("ti"))
             return "tiefling";
         else if (toMatch.substring(0, 2).toLowerCase().equals("hu"))
