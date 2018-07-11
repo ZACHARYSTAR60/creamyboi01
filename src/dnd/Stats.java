@@ -100,7 +100,7 @@ public class Stats  {
     }
     
     public String getOptimalClass(){
-        if (strength > intelligence && wisdom >=10)
+        if (strength > intelligence && constitution >=12)
             return "Fighter";
         else if( strength > intelligence && intelligence < 10)
             return "Barbarian";
@@ -153,7 +153,7 @@ public class Stats  {
     
     @Override
     public String toString(){
-       String ret= "My Strength is " + strength +" My intelligence is " + intelligence + " My dexterity is " + dexterity + " My wisdom is " + wisdom + " My constittution is " + constitution + " My charisma is " + charisma;
+       String ret= "My Strength is " + strength + "\n" + " My intelligence is " + intelligence + "\n" + " My dexterity is " + dexterity + "\n" + " My wisdom is " + wisdom + "\n" + " My constittution is " + constitution + "\n" + " My charisma is " + charisma;
        return ret;
    }
        

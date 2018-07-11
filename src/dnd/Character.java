@@ -79,11 +79,13 @@ public class Character {
     }
     public Character(){
         stats= new Stats();
-        System.out.println("old stats before race modifieres " + stats.toString());
+        System.out.println("Old stats before race modifieres:"  + "\n" + " " + stats.toString());
         race = new Race("elvish", "high-elf");
-        System.out.println("My race is " + race.toString());
+        System.out.println(" My race is " + race.toString());
         race.addRaceBonus(this);
-        System.out.println("new stats after race modifieres " + stats.toString());
+        System.out.println("New stats after race modifieres " + "\n" + " " + stats.toString());
+        
+        System.out.println("OUR recommendation for the class you should play, based on your stats is " +stats.getOptimalClass());
         weight = 150;  //ALL NEEDS CHANGING
         height = 5.10;
         sex = 'm';
