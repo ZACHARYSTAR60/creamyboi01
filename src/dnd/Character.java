@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Character {
     //fields
+    private String name;
     private Stats stats;
     private Race race;
     private int weight;
@@ -39,6 +40,8 @@ public class Character {
         return equipment;}
     public Role getRole(){
         return role;}
+    public String getName(){
+        return name;}
     
     //setters
     public void setStats(Stats stats1){
@@ -57,6 +60,9 @@ public class Character {
         equipment.add(toAdd);}
     public void setRole(Role newRole){
         role = newRole;}
+    public void setName(String set){
+        name = set;}
+    
     
     //force override should ususaly be false
     public void setDarkVisionDistance(int newDarkVision, boolean forceOverride){
@@ -83,14 +89,19 @@ public class Character {
      * @param myWeight
      * @param myHeight
      * @param mySex
+     * @param myRole
+     * @param myName
+     * @param myDarkVision Dark Vision Distance
      */
-    public Character(Stats myStats, Race myRace, int myWeight, double myHeight, char mySex, Role myRole){
+    public Character(Stats myStats, Race myRace, int myWeight, double myHeight, char mySex, Role myRole, String myName, int myDarkVision){
         stats=myStats;
         race=myRace;
         weight=myWeight;
         height=myHeight;
         sex=mySex;
         role = myRole;
+        name = myName;
+        darkVisionDistance = myDarkVision;
     }
     public Character(){
         stats= new Stats();
@@ -107,8 +118,9 @@ public class Character {
         sex = 'm';
         System.out.println("Here are some facts about your chacter:  " + weight + "lbs " + height + " " + String.valueOf(sex).toUpperCase());
         Role.addStartingEquipment(this);
-                
+        race.addDarkVision(this);       
     }
+    
     
     
     public void printEquipment()

@@ -1,6 +1,11 @@
 
 package dnd;
 
+import static dnd.Dice.BASE_NUMBERS;
+import static dnd.Dice.LETTERS;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Stats  {
     private int strength;
@@ -74,9 +79,63 @@ public class Stats  {
         wisdom=getRandoStats();
         constitution=getRandoStats();
         charisma=getRandoStats();
-        
     }
     
+    /**
+     * 
+     * @param letAssign Will let assign regardless of param value
+     */
+    public Stats(boolean letAssign){
+        ArrayList<Integer> availiableStats = new ArrayList<>();
+        for(int x = 0; x < 6 ;x++)
+        {
+            availiableStats.add(getRandoStats());
+        }
+        
+        String[] statNames = {"strength", "intelligence", "dexterity", "wisdom", "constitution","charisma"};
+        for(int z = 0; z < 6; z++)
+        {
+            System.out.println("Enter the stat for " + statNames[z]);
+            System.out.println("Availiable Stats left: " + availiableStats.toString());
+            for(boolean notDone = true; notDone;) //assigns one stat and checks to make sure the input is value
+            {
+                Scanner scanInput = new Scanner(System.in);
+                String input = scanInput.nextLine();
+                boolean isValid = true;
+                for (int x = 0; x < input.length(); x++)
+                {
+                    if (BASE_NUMBERS.indexOf(input.charAt(x)) < 0){
+                        System.out.println("Invalid Input");
+                        isValid = false;
+                        break;
+                    }
+                }
+                int selectedStat = 0;
+                if (isValid == true){
+                    selectedStat = Integer.valueOf(input);
+                    if(availiableStats.indexOf(selectedStat) >= 0){
+                       notDone = false;
+                       changeStat(statNames[z],availiableStats.get(availiableStats.indexOf(selectedStat)));
+                       System.out.println("you entered " + availiableStats.remove(availiableStats.indexOf(selectedStat))+ " for " + statNames[z]);
+                    } else{
+                        System.out.println("Stat no longer Availiable");
+                    }
+
+                }
+                else{
+                    System.out.println("please try again");
+                }
+
+
+            }
+        }
+    }
+            
+            
+    
+            
+            
+            
     //4d6 drop the lowest roll 
     public static int getRandoStats(){ 
         int[] rand={(int)(Math.random()*6+1),(int)(Math.random()*6+1),(int)(Math.random()*6+1),(int)(Math.random()*6+1)};
