@@ -105,7 +105,7 @@ public class Race {
             player.changeStat("constitution", 1);
             
         }
-        else if(race.equals("Elvish")){
+        else if(race.equals("elvish")){
             player.changeStat("dexterity", 2);
             if(subrace.equals("wood-elf"))
                 player.changeStat("wisdom",1);
@@ -222,7 +222,7 @@ public class Race {
         if(race.equals("Half-orc")){
             player.setDarkVisionDistance(60, false);
         }
-        else if(race.equals("Elvish")){
+        else if(race.equals("elvish")){
             player.setDarkVisionDistance(60, false);
         }
         else if (race.equals("human")){
