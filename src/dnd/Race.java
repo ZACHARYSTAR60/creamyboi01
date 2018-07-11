@@ -98,7 +98,7 @@ public class Race {
             subrace="none";
         return subrace;
     }
-    public int addRaceBonus(Character player){
+    public void addRaceBonus(Character player){
         int totalbonus=0;
         if(race.equals("half-orc")){
             player.changeStat("strength", 2);
@@ -179,7 +179,7 @@ public class Race {
                 }
             }
         }
-        return totalbonus;
+        //return totalbonus;
     }
     
     /**

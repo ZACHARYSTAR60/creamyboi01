@@ -101,16 +101,24 @@ public class Character {
         System.out.println("New stats after race modifieres " + "\n" + " " + stats.toString());
         
         System.out.println("OUR recommendation for the class you should play, based on your stats is " +stats.getOptimalClass());
-        role = new Role(this);
+        role = new Role("barbarian");
         weight = this.getRace().determineWeight();  //ALL NEEDS CHANGING
         height = this.getRace().determineHeight();
         sex = 'm';
-        System.out.println("Here are some facts about your chacter:  " + weight + " " + height + " " + sex);
+        System.out.println("Here are some facts about your chacter:  " + weight + " " + height + " " + String.valueOf(sex).toUpperCase());
+        Role.addStartingEquipment(this);
                 
     }
     
     
-    
+    public void printEquipment()
+    {
+        System.out.println("Your equipment is as follows: ");
+        for (int x = 0; x < equipment.size(); x++)
+        {
+            System.out.println(equipment.get(x));
+        }
+    }
     
     
     

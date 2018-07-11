@@ -34,13 +34,13 @@ public class Role {
     public Role(String desieredRole)
     {
         className = matchTextToClass(desieredRole);
-        healthDie = HITDIE[findClassPosition(className)];
+        healthDie = HITDIE[findClassPosition(matchTextToClass(className))];
     }
     
     public Role(Character player)
     {
         className = player.getStats().getOptimalClass();
-        healthDie = HITDIE[findClassPosition(className)];
+        healthDie = HITDIE[findClassPosition(matchTextToClass(className))];
     }
     
     public Role()
@@ -60,40 +60,46 @@ public class Role {
         return 0;
     }
     
-    public void addStartingEquipment(Character player)
+    public static void addStartingEquipment(Character player)
     {
-        if (className.equals("barbarian"))
+        if (player.getRole().getClassName().equals("barbarian")) //barbarian starting equipment
         {
-            for (boolean done = false; done;)
+            String[] barbStartingEQ = {"Greataxe", "any martial melee weapon"};
+            for (boolean done = true; done;)
             {
-                System.out.println("1)Greataxe or 2)any martial melee weapon");
+                System.out.println("1)" + barbStartingEQ[0] + " or 2)" + barbStartingEQ[1]);
                 Scanner scanInput = new Scanner(System.in);
                 String input = scanInput.nextLine();
-                scanInput.close();
+                
                 if(input.equals("1") == false && input.equals("2") == false)
                     System.out.println("Invalid input");
                 else
-                    done = true;
-                if (Integer.valueOf(input) == 1)
-                    player.addEquipment("Greataxe");
-                else
-                    player.addEquipment("any martial melee weapon ACTUALLY PUT SOMETHIN HERE");
+                {
+                    done = false;
+                    if (Integer.valueOf(input) == 1)
+                        player.addEquipment(barbStartingEQ[0]);
+                    else
+                        player.addEquipment(barbStartingEQ[1]+ " ACTUALLY PUT SOMETHIN HERE");
+                }
                     
             }
-            for (boolean done = false; done;)
+            for (boolean done = true; done;)
             {
                 System.out.println("1)Two handaxes or 2)any simple weapon");
                 Scanner scanInput = new Scanner(System.in);
-                String input = scanInput.nextLine();
-                scanInput.close();
+                String input = "";
+                input = scanInput.nextLine();
+                
                 if(input.equals("1") == false && input.equals("2") == false)
                     System.out.println("Invalid input");
                 else
-                    done = true;
-                if (Integer.valueOf(input) == 1)
-                    player.addEquipment("2 Handaxes");
-                else
-                    player.addEquipment("any simple weapon ACTUALLY PUT SOMETHIN HERE");
+                {
+                    done = false;
+                    if (Integer.valueOf(input) == 1)
+                        player.addEquipment("2 Handaxes");
+                    else
+                        player.addEquipment("any simple weapon ACTUALLY PUT SOMETHIN HERE");
+                }
                     
             }
             System.out.println("You also get an edxplorer's pack and four javelins");
@@ -103,8 +109,9 @@ public class Role {
         
     }
     
-    public String matchTextToClass(String toMatch)
+    public String matchTextToClass(String original)
     {
+        String toMatch = original.toLowerCase();
         if (toMatch.substring(0,4).equals("barb"))
             return "barbarian";
         else if(toMatch.substring(0,4).equals("bard"))
