@@ -260,7 +260,7 @@ public class Race {
         return x;
     }
     public double determineHeight(){
-        double x= (double)(Math.random()*5.00);
+        double x= (double)(Math.random()*8.00 +2.00);
         if(race.equals("half-orc"))
             x+=2.00;
         else if(race.equals("half-elf"))
