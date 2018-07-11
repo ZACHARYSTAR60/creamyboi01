@@ -20,6 +20,7 @@ public class Character {
     private char sex;
     private int darkVisionDistance;
     private ArrayList<String> equipment = new ArrayList<>();
+    private Role role;
     
     //getters
     public Stats getStats(){
@@ -35,8 +36,9 @@ public class Character {
     public int darkVisionDistance(){
         return darkVisionDistance;}
     public ArrayList<String> getEquipment(){
-        return equipment;
-    }
+        return equipment;}
+    public Role getRole(){
+        return role;}
     
     //setters
     public void setStats(Stats stats1){
@@ -50,8 +52,11 @@ public class Character {
     public void changeStat(String statType, int changeAmount){
         stats.changeStat(statType.toLowerCase(), changeAmount);}
     public void setEquipment(ArrayList<String> setEQ){
-        equipment = setEQ;
-    }
+        equipment = setEQ;}
+    public void addEquipment(String toAdd){
+        equipment.add(toAdd);}
+    public void setRole(Role newRole){
+        role = newRole;}
     
     //force override should ususaly be false
     public void setDarkVisionDistance(int newDarkVision, boolean forceOverride){
@@ -79,12 +84,13 @@ public class Character {
      * @param myHeight
      * @param mySex
      */
-    public Character(Stats myStats, Race myRace, int myWeight, double myHeight, char mySex){
+    public Character(Stats myStats, Race myRace, int myWeight, double myHeight, char mySex, Role myRole){
         stats=myStats;
         race=myRace;
         weight=myWeight;
         height=myHeight;
         sex=mySex;
+        role = myRole;
     }
     public Character(){
         stats= new Stats();
@@ -95,6 +101,7 @@ public class Character {
         System.out.println("New stats after race modifieres " + "\n" + " " + stats.toString());
         
         System.out.println("OUR recommendation for the class you should play, based on your stats is " +stats.getOptimalClass());
+        role = new Role(this);
         weight = this.getRace().determineWeight();  //ALL NEEDS CHANGING
         height = this.getRace().determineHeight();
         sex = 'm';

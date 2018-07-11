@@ -1,6 +1,8 @@
 
 package dnd;
 
+import java.util.Scanner;
+
 /**
  *
  * @author WongZ 
@@ -11,25 +13,30 @@ public class Role {
     //fields
     private String className;
     private int healthDie;
-    private String equipment;
     
     //getters
     public String getClassName(){
         return className;}
     public int getHealthDie(){
         return healthDie;}
-    public String getEquipment(){
-        return equipment;}
+//    public String getEquipment(){
+//        return equipment;}
     
     //setters
     public void setClassName(String newName){
         className = newName;}
     public void setHealthDie(int newHealthDie){
         healthDie = newHealthDie;}
-    public void setEquipment(String newEquipment){
-        equipment = newEquipment;}
+//    public void setEquipment(String newEquipment){
+//        equipment = newEquipment;}
     
     //constructors
+    public Role(String desieredRole)
+    {
+        className = matchTextToClass(desieredRole);
+        healthDie = HITDIE[findClassPosition(className)];
+    }
+    
     public Role(Character player)
     {
         className = player.getStats().getOptimalClass();
@@ -53,9 +60,47 @@ public class Role {
         return 0;
     }
     
-    public String startingEquipment()
+    public void addStartingEquipment(Character player)
     {
         if (className.equals("barbarian"))
+        {
+            for (boolean done = false; done;)
+            {
+                System.out.println("1)Greataxe or 2)any martial melee weapon");
+                Scanner scanInput = new Scanner(System.in);
+                String input = scanInput.nextLine();
+                scanInput.close();
+                if(input.equals("1") == false && input.equals("2") == false)
+                    System.out.println("Invalid input");
+                else
+                    done = true;
+                if (Integer.valueOf(input) == 1)
+                    player.addEquipment("Greataxe");
+                else
+                    player.addEquipment("any martial melee weapon ACTUALLY PUT SOMETHIN HERE");
+                    
+            }
+            for (boolean done = false; done;)
+            {
+                System.out.println("1)Two handaxes or 2)any simple weapon");
+                Scanner scanInput = new Scanner(System.in);
+                String input = scanInput.nextLine();
+                scanInput.close();
+                if(input.equals("1") == false && input.equals("2") == false)
+                    System.out.println("Invalid input");
+                else
+                    done = true;
+                if (Integer.valueOf(input) == 1)
+                    player.addEquipment("2 Handaxes");
+                else
+                    player.addEquipment("any simple weapon ACTUALLY PUT SOMETHIN HERE");
+                    
+            }
+            System.out.println("You also get an edxplorer's pack and four javelins");
+            player.addEquipment("Explorer's pack");
+            player.addEquipment("4 javelins");
+        }
+        
     }
     
     public String matchTextToClass(String toMatch)
