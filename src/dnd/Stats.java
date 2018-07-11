@@ -96,7 +96,7 @@ public class Stats  {
         return sum;
     }
     
-    public String getOptimalType(){
+    public String getOptimalClass(){
         if (strength > inteligence && wisdom >=10)
             return "Fighter";
         else if( strength > inteligence && inteligence < 10)
@@ -105,6 +105,28 @@ public class Stats  {
             return "Wizard";
         else
             return "Daddy";
+    }
+    
+    /**
+     * Takes the input and matches it to the proper stat name
+     * @param toMatch
+     * @return The full string of the stat
+     */
+    public static String matchTxtToStat(String toMatch)
+    {
+        if (toMatch.substring(0, 1).toLowerCase().equals("s"))
+            return "strength";
+        else if (toMatch.substring(0, 1).toLowerCase().equals("d"))
+            return "dexterity";
+        else if (toMatch.substring(0, 2).toLowerCase().equals("co"))
+            return "constitution";
+        else if (toMatch.substring(0, 1).toLowerCase().equals("i"))
+            return "intelegence";
+        else if (toMatch.substring(0, 1).toLowerCase().equals("w"))
+            return "wisdom";
+        else if (toMatch.substring(0, 2).toLowerCase().equals("ch"))
+            return "charisma";
+        return "DID NOT MATCH";
     }
    
    

@@ -16,6 +16,7 @@ public class Character {
     private int weight;
     private double height;
     private char sex;
+    private int darkVisionDistance;
     
     //getters
     public Stats getStats(){
@@ -28,6 +29,8 @@ public class Character {
         return height;}
     public char getSex(){
         return sex;}
+    public int darkVisionDistance(){
+        return darkVisionDistance;}
     
     //setters
     public void setStats(Stats stats1){
@@ -39,7 +42,19 @@ public class Character {
     public void setSex(char sexy){
         sex=sexy;}
     public void changeStat(String statType, int changeAmount){
-            stats.changeStat(statType, changeAmount);
+        stats.changeStat(statType.toLowerCase(), changeAmount);}
+    
+    //force override should ususaly be false
+    public void setDarkVisionDistance(int newDarkVision, boolean forceOverride){
+        if (forceOverride == true)
+            darkVisionDistance = newDarkVision;
+        else
+        {
+            if (darkVisionDistance < newDarkVision)
+                darkVisionDistance = newDarkVision;
+            else
+                ;//do nothing
+        }
     }
     
     
@@ -55,7 +70,8 @@ public class Character {
     public Character(){
         stats= new Stats();
         System.out.println("old stats before race modifieres " + stats.toString());
-        race = new Race("Elvish");  //NEEDS TO BE CHANGED
+        race = new Race();
+        System.out.println("My race is " + race.toString());
         race.addRaceBonus(this);
         System.out.println("new stats after race modifieres " + stats.toString());
         weight = 150;  //ALL NEEDS CHANGING
