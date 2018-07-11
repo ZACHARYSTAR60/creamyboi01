@@ -5,6 +5,8 @@
  */
 package dnd;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Joseph
@@ -17,6 +19,7 @@ public class Character {
     private double height;
     private char sex;
     private int darkVisionDistance;
+    private ArrayList<String> equipment = new ArrayList<>();
     
     //getters
     public Stats getStats(){
@@ -31,6 +34,9 @@ public class Character {
         return sex;}
     public int darkVisionDistance(){
         return darkVisionDistance;}
+    public ArrayList<String> getEquipment(){
+        return equipment;
+    }
     
     //setters
     public void setStats(Stats stats1){
@@ -43,6 +49,9 @@ public class Character {
         sex=sexy;}
     public void changeStat(String statType, int changeAmount){
         stats.changeStat(statType.toLowerCase(), changeAmount);}
+    public void setEquipment(ArrayList<String> setEQ){
+        equipment = setEQ;
+    }
     
     //force override should ususaly be false
     public void setDarkVisionDistance(int newDarkVision, boolean forceOverride){
