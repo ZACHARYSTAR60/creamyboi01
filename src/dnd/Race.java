@@ -48,6 +48,12 @@ public class Race {
         //BUILD MATCHER YOU FUCKING BITCH FUCK YOU AND YOUR FAMILY I FUCKING HATE YOU WHY ARE WE DOING THIS SHIT
     }
     
+    public Race(String desieredRace)
+    {
+        race = matchTextToRace(desieredRace);
+        subrace = randomSubRace();
+    }
+    
   
     
     public static String randomRace(){

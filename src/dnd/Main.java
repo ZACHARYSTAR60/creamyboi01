@@ -6,10 +6,9 @@ public class Main {
 
   
     public static void main(String[] args) {
-      //Character zach = new Character();
-      //zach.printEquipment();
-      Stats stat = new Stats(true);
-      System.out.println(stat.toString());
+      Character zach = new Character("Elres", "elf", 'f',"ranger");
+      System.out.println(zach);
+      
       
       
       

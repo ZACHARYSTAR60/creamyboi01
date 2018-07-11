@@ -121,6 +121,19 @@ public class Character {
         race.addDarkVision(this);       
     }
     
+    public Character(String myName, String desiredRace, char mySex, String desiredRole)
+    {
+        name = myName;
+        race = new Race(desiredRace);
+        sex = mySex;
+        role = new Role(desiredRole);
+        stats = new Stats(true);
+        weight = race.determineWeight();
+        height = race.determineHeight();
+        darkVisionDistance = 0;
+        race.addDarkVision(this);
+    }
+    
     
     
     public void printEquipment()
@@ -130,6 +143,20 @@ public class Character {
         {
             System.out.println(equipment.get(x));
         }
+    }
+    
+    @Override
+    public String toString()
+    {
+        String ret = "";
+        ret += "Name: " + name +"\n";
+        ret += race.toString() + " " + role.getClassName() + "\n";
+        ret += "Gender: " + sex;
+        ret += stats.toString() +"\n";
+        ret += "dark vision up to " + darkVisionDistance+ " feet\n";
+        ret += "Weight: " +weight + " lbs\n";
+        ret += "Hight: " +height + "";
+        return ret;
     }
     
     
