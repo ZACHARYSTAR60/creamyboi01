@@ -39,17 +39,19 @@ public class Stats  {
     
     
   public void changeStat(String statType, int changeAmount){
-        if (statType == "strength")
+      String statTypeMatched = Stats.matchTextToStat(statType);
+      
+        if ("strength".equals(statTypeMatched))
             strength += changeAmount;
-        else if (statType == "inteligence")
+        else if ("inteligence".equals(statTypeMatched))
             inteligence += changeAmount;
-        else if (statType == "dexterity")
+        else if ("dexterity".equals(statTypeMatched))
             dexterity += changeAmount;
-        else if (statType == "wisdom")
+        else if ("wisdom".equals(statTypeMatched))
             wisdom += changeAmount;
-        else if (statType == "constitution")
+        else if ("constitution".equals(statTypeMatched))
             constitution += changeAmount;
-        else if (statType == "charisma")
+        else if ("charisma".equals(statTypeMatched))
             charisma += changeAmount;
         
     }
@@ -64,6 +66,7 @@ public class Stats  {
         constitution=myCons;
         charisma=myChar;
         }
+    
     public Stats(){
         strength=getRandoStats();
         inteligence=getRandoStats();
@@ -75,7 +78,7 @@ public class Stats  {
     }
     
     //4d6 drop the lowest roll 
-    public int getRandoStats(){ 
+    public static int getRandoStats(){ 
         int[] rand={(int)(Math.random()*6+1),(int)(Math.random()*6+1),(int)(Math.random()*6+1),(int)(Math.random()*6+1)};
         int min = 20;
         int pos = 0;
@@ -112,7 +115,7 @@ public class Stats  {
      * @param toMatch
      * @return The full string of the stat
      */
-    public static String matchTxtToStat(String toMatch)
+    public static String matchTextToStat(String toMatch)
     {
         if (toMatch.substring(0, 1).toLowerCase().equals("s"))
             return "strength";
@@ -132,9 +135,9 @@ public class Stats  {
    
    //OOPS SORRY BUT LETS TRY THIS SHIT OUT 7/9/2018 ZACH WONG
     
+    @Override
     public String toString(){
        String ret= "My Strength is " + strength +" My inteligence is " + inteligence + " My dexterity is " + dexterity + " My wisdom is " + wisdom + " My constittution is " + constitution + " My charisma is " + charisma;
-       //String acc= ", My race is " + determineRace(race) + ", My total Stat bonus is " + addRaceBonus(totalbonus);
        return ret;
    }
        

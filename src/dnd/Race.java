@@ -32,7 +32,7 @@ public class Race {
     //constructor
     public Race()
     {
-        race = randomRace();
+        race = Race.matchTextToRace(randomRace());
     }
     
     public Race (String desieredRace)
@@ -42,27 +42,27 @@ public class Race {
     
   
     
-    public String randomRace(){
+    public static String randomRace(){
         int x= (int)(Math.random()* 100 +1);
         if(x <40)
-            race="human";
+            return "human";
         if(x>=40 && x<50)
-            race="half-elf";
+            return "half-elf";
         if(x>=50 && x<55)
-            race="halfling";
+            return "halfling";
         if(x>=55 && x<60)
-            race="half-orc";
+            return "half-orc";
         if(x>=60 && x<70)
-            race="dwarvish";
+            return "dwarf";
         if(x>=70 && x<85)
-            race="elvish";
+            return "elvish";
         if(x>=85 && x<90)
-            race="gnomish";
+            return "gnome";
         if(x>=90 && x<91)
-            race="dragonborn";
+            return "dragonborn";
         if(x>=91 && x<100)
-            race="tiefling";
-      return race;
+            return "tiefling";
+      return "PROBLEM";
     }
     
     public int addRaceBonus(Character player){
@@ -85,11 +85,11 @@ public class Race {
             player.changeStat("wisdom", 1);
             totalbonus=6;
         }
-        else if (race.equals("gnomish")){
+        else if (race.equals("gnome")){
             player.changeStat("inteligence", 2);
             totalbonus=2;
         }
-        else if(race.equals("Dwarvish")){
+        else if(race.equals("dwarf")){
             player.changeStat("constitution", 2);
             totalbonus=2;
         }
@@ -112,7 +112,7 @@ public class Race {
                 System.out.println("You can pick one or more stats to add " + additionsLeft + " to whichever stats you want, type the name of the stat");
                 Scanner scanInput = new Scanner(System.in);
                 String input = scanInput.nextLine();
-                String statName = Stats.matchTxtToStat(input);
+                String statName = Stats.matchTextToStat(input);
                 if (statName.equals("DID NOT MATCH"))
                     System.out.println("Your input did not match, try again");
                 else
@@ -137,7 +137,7 @@ public class Race {
      * @param toMatch
      * @return the proper race string
      */
-    public static String matchTxtToRace(String toMatch)
+    public static String matchTextToRace(String toMatch)
     {
         if (toMatch.substring(0, 2).toLowerCase().equals("el"))
             return "elvish";
@@ -147,10 +147,15 @@ public class Race {
             return "dwarf";
         else if (toMatch.substring(0, 2).toLowerCase().equals("gn"))
             return "gnome";
-        else if (toMatch.substring(0, 6).toLowerCase().equals("half-e"))
-            return "half-elf";
-        else if (toMatch.substring(0, 6).toLowerCase().equals("half-o"))
-            return "half-orc";
+        else if (toMatch.substring(0, 4).toLowerCase().equals("half"))
+        {
+            if (toMatch.substring(0,6).toLowerCase().equals("half-e"))
+                return "half-elf";
+            else if (toMatch.substring(0,6).toLowerCase().equals("half-o"))
+                return "half-orc";
+            else
+                System.out.println("ERROR IN MATCH TEXT TO RACE METHOD");
+        }
         else if (toMatch.substring(0, 2).toLowerCase().equals("ha"))
             return "halfling";
         else if (toMatch.substring(0, 2).toLowerCase().equals("ti"))
@@ -191,77 +196,9 @@ public class Race {
     }
     
     
+    @Override
     public String toString()
     {
         return race;
     }
 }
-//public int RandomRace(){
-//         int Me= (int)(Math.random()* 100 +1);
-//        return Me;}
-//    public String determineRace(String race1){
-//        int x= (int)(Math.random()* 100 +1);
-//        if(x <20)
-//            race="human";
-//        if(x>=20 && x<30)
-//            race="half-elf";
-//        if(x>=30 && x<40)
-//            race="halfling";
-//        if(x>=40 && x<50)
-//            race="Half-orc";
-//        if(x>=50 && x<60)
-//            race="Dwarvish";
-//        if(x>=60 && x<70)
-//            race="Elvish";
-//        if(x>=70 && x<80)
-//            race="gnomish";
-//        if(x>=80 && x<90)
-//            race="dragonborn";
-//        if(x>=90 && x<100)
-//            race="tiefling";
-//      return race;
-//    }
-//    
-//    public int addRaceBonus(int bonus1){
-//        int totalbonus=0;
-//        if(race.equals("Half-orc")){
-//            strength+=2;
-//            constitution+=1;
-//            totalbonus=3;
-//        }
-//        if(race.equals("Elvish")){
-//            dexterity+=2;
-//            totalbonus=2;
-//        }
-//        if (race.equals("human")){
-//            strength+=1;
-//            dexterity+=1;
-//            inteligence+=1;
-//            constitution+=1;
-//            charisma+=1;
-//            wisdom+=1;
-//            totalbonus=6;
-//        }
-//        if (race.equals("gnomish")){
-//            inteligence+=2;
-//            totalbonus=2;
-//        }
-//        if(race.equals("Dwarvish")){
-//            constitution+=2;
-//            totalbonus=2;
-//        }
-//        if(race.equals("halfling")){
-//            dexterity+=2;
-//            totalbonus=2;
-//        }
-//        if(race.equals("dragonborn")){
-//            charisma+=1;
-//            strength+=2;
-//            totalbonus=3;
-//        }
-//        
-//        
-//        
-//        return totalbonus;
-//        
-//    }

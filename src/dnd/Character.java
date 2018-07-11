@@ -60,6 +60,16 @@ public class Character {
     
     //constructors
     
+    
+    
+    /**
+     * 
+     * @param myStats put predecided stats or use Stats.getRandoStats to generate random stats
+     * @param myRace put a race object or use Race.RandomRace
+     * @param myWeight
+     * @param myHeight
+     * @param mySex
+     */
     public Character(Stats myStats, Race myRace, int myWeight, double myHeight, char mySex){
         stats=myStats;
         race=myRace;
