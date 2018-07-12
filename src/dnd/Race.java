@@ -254,19 +254,19 @@ public class Race {
     public int determineWeight(){
         int ret = 0;
         if(race.equals("half-orc"))
-            ret = 140 * Dice.roll("2d6");
+            ret = 140 +(Dice.roll("2d10")* Dice.roll("2d6"));
         else if(race.equals("half-elf"))
-            ret = 110 * Dice.roll("2d4");
+            ret = 110 + (Dice.roll("2d8")* Dice.roll("2d4"));
         else if(race.equals("halfling"))
-            ret = 35;
+            ret = 35 + Dice.roll("2d8");
         else if(race.equals("dwarf"))
-            ret = 120 * Dice.roll("2d6");
+            ret = 120 +(Dice.roll("2d4")*  Dice.roll("2d6"));
         else if(race.equals("gnome"))
-            ret = 35;
+            ret = 35 + Dice.roll("2d4") ;
         else if(race.equals("elf"))
-            ret = 90 * Dice.roll("1d4");
+            ret = 90 +(Dice.roll("2d10")*  Dice.roll("1d4"));
         else //human
-            ret = 110 * Dice.roll("2d4");
+            ret = 110 +(Dice.roll("2d10")*  Dice.roll("2d4"));
         return ret;
     }
     

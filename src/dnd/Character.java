@@ -130,7 +130,7 @@ public class Character {
         height = this.getRace().determineHeight();
         sex = 'm';
         System.out.println("Here are some facts about your chacter:  " + weight + "lbs " + height + " " + String.valueOf(sex).toUpperCase());
-        Role.addStartingEquipment(this);
+        //Role.addStartingEquipment(this);
         race.addDarkVision(this);
         maxHealth = Character.calcMaxHealth(this, 1);
     }
