@@ -118,18 +118,18 @@ public class Character {
     }
     public Character(){
         stats= new Stats();
-        System.out.println("Old stats before race modifieres:"  + "\n" + " " + stats.toString());
-        race = new Race("elf", "high-elf");
-        System.out.println(" My race is " + race.toString());
+        //System.out.println("Old stats before race modifieres:"  + "\n" + " " + stats.toString());
+        race = new Race();
+        //System.out.println(" My race is " + race.toString());
         race.addRaceBonus(this);
-        System.out.println("New stats after race modifieres " + "\n" + " " + stats.toString());
+        //System.out.println("New stats after race modifieres " + "\n" + " " + stats.toString());
         
-        System.out.println("OUR recommendation for the class you should play, based on your stats is " +stats.getOptimalClass());
+        //System.out.println("OUR recommendation for the class you should play, based on your stats is " +stats.getOptimalClass());
         role = new Role("barbarian");
         weight = this.getRace().determineWeight();  //ALL NEEDS CHANGING
         height = this.getRace().determineHeight();
         sex = 'm';
-        System.out.println("Here are some facts about your chacter:  " + weight + "lbs " + height + " " + String.valueOf(sex).toUpperCase());
+        //System.out.println("Here are some facts about your chacter:  " + weight + "lbs " + height + " " + String.valueOf(sex).toUpperCase());
         //Role.addStartingEquipment(this);
         race.addDarkVision(this);
         maxHealth = Character.calcMaxHealth(this, 1);
