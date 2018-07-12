@@ -377,7 +377,60 @@ public class Race {
             ret.add("Speak/Read/Wright: Common and Infernal");
         }
         return ret;
-        ///asdfasdfasdf
+        
+    }
+    
+    public static String randomNameGenerator(Character player){
+        String name="";
+        int x=(int)(Math.random()*17+1);
+        if(player.getRace().equals("dwarf"))
+            if(player.getSex()=='m' && x==1)
+                name="Adrik";
+            else if(player.getSex()=='m' && x==2)
+                name="Albrick";
+            else if(player.getSex()=='m' && x==3)
+                name="Baren";
+            else if(player.getSex()=='m' && x==4)
+                name="Barendd";
+            else if(player.getSex()=='m' && x==5)
+                name="Brottor";
+            else if(player.getSex()=='m' && x==6)
+                name="Bruenor";
+            else if(player.getSex()=='m' && x==7)
+                name="Dane";
+            else if(player.getSex()=='m' && x==8)
+                name="Derrak";
+            else if(player.getSex()=='m' && x==9)
+                name="Delg";
+            else if(player.getSex()=='m' && x==10)
+                name="Eberk";
+            else if(player.getSex()=='m' && x==11)
+                name="Eiknel";
+            else if(player.getSex()=='m' && x==12)
+                name="Fargrim";
+            else if(player.getSex()=='m' && x==13)
+                name="Flint";
+            else if(player.getSex()=='m' && x==14)
+                name="Guardian";
+            else if(player.getSex()=='m' && x==15)
+                name="Harbek";
+            else if(player.getSex()=='m' && x==16)
+                name="Killdrak";
+            else if(player.getSex()=='m' && x==17)
+                name="Morgran";
+            else if(player.getSex()=='m' && x==18)
+                name="Orisky";
+        
+        return name;
+                        
+                        
+                
+                
+                    
+                
+            
+            
+        
     }
     
     
