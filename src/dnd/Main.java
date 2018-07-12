@@ -6,11 +6,11 @@ public class Main {
 
   
     public static void main(String[] args) {
-      Character zach = new Character("Elres", "elf", 'f',"ranger", 1);
+      Character zach = new Character("Elres", Race.randomRace(), 'm',"ranger", 1);
+      Character joe= new Character();
       System.out.println(zach);
-      for (int x= 0; x < zach.getRace().getBonuses().size(); x++){
-          System.out.println(zach.getRace().getBonuses().get(x));
-      }
+      System.out.println("OKAY GENERATING A NEW COMPLETE RANDOMIZED CHARACTER");
+      System.out.println(joe);
       
       
       
