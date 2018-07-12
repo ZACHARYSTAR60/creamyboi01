@@ -164,7 +164,7 @@ public class Race {
         else if(race.equals("half-elf")){
             player.changeStat("charisma", 1);
             for (int additionsLeft = 2; additionsLeft >0;){
-                System.out.println("You can pick one or more stats to add " + additionsLeft + " to whichever stats you want, type the name of the stat");
+                System.out.println("Your a half-elf, you can pick one or more stats to add " + additionsLeft + " to whichever stats you want, type the name of the stat");
                 Scanner scanInput = new Scanner(System.in);
                 String input = scanInput.nextLine();
                 String statName = Stats.matchTextToStat(input); //BIG FUCKING ERROR, IF YOU PUT IN A NUMBER IT CRASHED THE ENTIRE PROGRAM
@@ -217,7 +217,7 @@ public class Race {
             return "tiefling";
         else if (toMatch.substring(0, 2).toLowerCase().equals("hu"))
             return "human";
-        return "DID NOT MATCH";
+        return "DID NOT MATCH TEXT TO RACE";
     }
     
     public void addDarkVision(Character player){
@@ -383,7 +383,7 @@ public class Race {
     public static String randomNameGenerator(Character player){
         String name="";
         int x=(int)(Math.random()*17+1);
-        if(player.getRace().equals("dwarf"))
+        if(player.getRace().getRace().equals("dwarf"))
             if(player.getSex()=='m' && x==1)
                 name="Adrik";
             else if(player.getSex()=='m' && x==2)
