@@ -209,6 +209,13 @@ public class Stats  {
         return "DID NOT MATCH";
     }
    
+    
+    
+    
+    public static int getModifier(int statValue)
+    {
+        return (statValue -10)/2;
+    }
    
    //OOPS SORRY BUT LETS TRY THIS SHIT OUT 7/9/2018 ZACH WONG
     

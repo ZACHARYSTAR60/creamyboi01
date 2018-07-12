@@ -22,6 +22,8 @@ public class Character {
     private int darkVisionDistance;
     private ArrayList<String> equipment = new ArrayList<>();
     private Role role;
+    private int maxHealth;
+    private int level;
     
     //getters
     public Stats getStats(){
@@ -42,6 +44,11 @@ public class Character {
         return role;}
     public String getName(){
         return name;}
+    public int getMaxHealth(){
+        return maxHealth;}
+    public int getLevel(){
+        return level;
+    }
     
     //setters
     public void setStats(Stats stats1){
@@ -62,6 +69,10 @@ public class Character {
         role = newRole;}
     public void setName(String set){
         name = set;}
+    public void setMaxHealth(int set){
+        maxHealth = set;}
+    public void setLevel(int set){
+        level = set;}
     
     
     //force override should ususaly be false
@@ -92,8 +103,9 @@ public class Character {
      * @param myRole
      * @param myName
      * @param myDarkVision Dark Vision Distance
+     * @param myMaxHealth
      */
-    public Character(Stats myStats, Race myRace, int myWeight, double myHeight, char mySex, Role myRole, String myName, int myDarkVision){
+    public Character(Stats myStats, Race myRace, int myWeight, double myHeight, char mySex, Role myRole, String myName, int myDarkVision, int myMaxHealth){
         stats=myStats;
         race=myRace;
         weight=myWeight;
@@ -102,6 +114,7 @@ public class Character {
         role = myRole;
         name = myName;
         darkVisionDistance = myDarkVision;
+        maxHealth = myMaxHealth;
     }
     public Character(){
         stats= new Stats();
@@ -118,10 +131,11 @@ public class Character {
         sex = 'm';
         System.out.println("Here are some facts about your chacter:  " + weight + "lbs " + height + " " + String.valueOf(sex).toUpperCase());
         Role.addStartingEquipment(this);
-        race.addDarkVision(this);       
+        race.addDarkVision(this);
+        maxHealth = Character.calcMaxHealth(this, 1);
     }
     
-    public Character(String myName, String desiredRace, char mySex, String desiredRole)
+    public Character(String myName, String desiredRace, char mySex, String desiredRole, int desieredLevel)
     {
         name = myName;
         race = new Race(desiredRace);
@@ -132,6 +146,7 @@ public class Character {
         height = race.determineHeight();
         darkVisionDistance = 0;
         race.addDarkVision(this);
+        maxHealth = Character.calcMaxHealth(this, desieredLevel);
     }
     
     
@@ -145,13 +160,27 @@ public class Character {
         }
     }
     
+    
+    
+    public static int calcMaxHealth(Character player, int level)
+    {
+        int ret = player.getRole().getHealthDie() + Stats.getModifier(player.getStats().getCons());
+        for(int x = 1; x < level; x++)
+        {
+            ret+= Dice.roll("1d" + player.getRole().getHealthDie()) + Stats.getModifier(player.getStats().getChar());
+        }
+        return ret;
+    }
+    
+    
     @Override
     public String toString()
     {
         String ret = "";
         ret += "Name: " + name +"\n";
         ret += race.toString() + " " + role.getClassName() + "\n";
-        ret += "Gender: " + sex;
+        ret += "Max Health is: "+this.getMaxHealth() + "\n";
+        ret += "Gender: " + String.valueOf(sex).toUpperCase() + "\n";
         ret += stats.toString() +"\n";
         ret += "dark vision up to " + darkVisionDistance+ " feet\n";
         ret += "Weight: " +weight + " lbs\n";

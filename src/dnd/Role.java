@@ -18,17 +18,21 @@ public class Role {
     public String getClassName(){
         return className;}
     public int getHealthDie(){
-        return healthDie;}
-//    public String getEquipment(){
-//        return equipment;}
+        for (int x = 0; x < CLASSES.length;x++){
+            if(CLASSES[x].equals(className))
+                return HITDIE[x];
+        }
+            
+        System.out.println("ERROR IN GET HEALTH DIE METHOD UNDER ROLE CLASS");
+        return 8;   
+    }
+
     
     //setters
     public void setClassName(String newName){
         className = newName;}
     public void setHealthDie(int newHealthDie){
         healthDie = newHealthDie;}
-//    public void setEquipment(String newEquipment){
-//        equipment = newEquipment;}
     
     //constructors
     public Role(String desieredRole)
@@ -60,7 +64,7 @@ public class Role {
         return 0;
     }
     
-    public static void addStartingEquipment(Character player)
+    public static void addStartingEquipment(Character player)  //man not finish
     {
         if (player.getRole().getClassName().equals("barbarian")) //barbarian starting equipment
         {

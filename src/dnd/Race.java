@@ -5,6 +5,7 @@
  */
 package dnd;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -15,22 +16,20 @@ public class Race {
     public static final String[] RACES = {"dragonborn", "dwarf", "elf", "gnome", "half-elf", "half-orc", "halfling", "human", "tiefling"};
     //fields
     private String race;
-    private int totalbonus;
+    
     private String subrace;
     
     //getters
     public String getRace(){
         return race;}
-    public int getBonus(){
-        return totalbonus;}
+   
     public String getSubrace(){
         return subrace;}
     
     //setters
     public void setRace(String Rce){
         race=Rce;}
-    public void setBonus(int Bonus){
-        totalbonus=Bonus;}
+    
     public void setSubRace(String subby){
         subrace=subby;}
     
@@ -96,7 +95,7 @@ public class Race {
         }
         else if(race.equals("gnome")){
             if(x>50)
-                subrace="deep-gnome";
+                subrace="forest-gnome";
             else
                 subrace="rock-gnome";
         }
@@ -134,7 +133,7 @@ public class Race {
             player.changeStat("intelligence", 2);
             if(subrace.equals("rock-gnome")){
                 player.changeStat("constitution",1);}
-            else if(subrace.equals("deep-gnome")){
+            else if(subrace.equals("forest-gnome")){
                 player.changeStat("dexterity",1);
             }
             
@@ -226,7 +225,10 @@ public class Race {
             player.setDarkVisionDistance(60, false);
         }
         else if(race.equals("elf")){
-            player.setDarkVisionDistance(60, false);
+            if(subrace.equals("dark-elf")){
+                player.setDarkVisionDistance(120, false);
+            }else
+                player.setDarkVisionDistance(60, false);
         }
         else if (race.equals("human")){
             player.setDarkVisionDistance(0, false);
@@ -288,6 +290,93 @@ public class Race {
         double ret = (inches / 12) + ((inches % 12)/100.0);
         return ret;
         
+    }
+    
+    
+    public ArrayList<String> getBonuses()
+    {
+        ArrayList<String> ret = new ArrayList<>();
+        if (race.equals("dwarf")){
+            ret.add("Advantage on saving throws against poison");
+            ret.add("Advantage against poison damage");
+            ret.add("Proficiency with battleaxe, handaxe, light hammer, and warhammer");
+            ret.add("check tool proficiency");
+            ret.add("Gain double proficiency on all history checks made related to stonework");
+            ret.add("Speek/Read/Write: common and dwarvish");
+            if(subrace.equals("hill-dwarf")){
+                ret.add("your hit point max increases by one every level");
+            }
+            else if(subrace.equals("mountain-dwarf")){
+                ret.add("you have proficiency with light and medium armor");
+            }
+            else
+                System.out.println("ERROR IN GET BONUSES METHOD UNDER THE RACE CLASS");
+            
+        }
+        else if(race.equals("elf")){
+            ret.add("You have profiency in perception");
+            ret.add("you have advantage on saving throws against being charmed");
+            ret.add("magic cant put you to sleep");
+            ret.add("you can long rest for only 4 hours if you trance");
+            ret.add("Speek/Read/Write: Common and Elvish");
+            if(subrace.equals("high-elf")){
+                ret.add("you have proficiency with longsword, shortsword, shortbow, and longbow");
+            }
+            else if(subrace.equals("wood-elf")){
+                ret.add("you have proficiency with longsword, shortsword, shortbow, and longbow");
+                ret.add("you can attempt to hide uner natural phenomena that it would make senes to be able to hide by");
+            }
+            else if(subrace.equals("dark-elf")){
+                ret.add("you have disadvantage on attack rolls and perception checks that rely on sight while any party involved is in direct sunlight");
+                ret.add("you know the danceing lights cantrip, faerie fire spell, and darkness spell");
+                ret.add("you have proficiency with rapiers, shortswords, and hand crossbows");
+            }
+        }
+        else if (race.equals("halfling")){
+            ret.add("if you roll a 1 on a d20, you may reroll the die once");
+            ret.add("you have advantage on saving throws against being frightened");
+            ret.add("you can move through the space of any creature one size larger than you");
+            ret.add("Speak/Read/Write: Common and halfling");
+            ret.add("aditional benifits from the different types of halflings");
+            
+        }
+        else if(race.equals("human")){
+            ret.add("Speak/Read/Wright: Common and one other language");
+        }
+        else if(race.equals("dragonborn")){
+            ret.add("you can spit damage of a spesific type, refer to page 34");
+            ret.add("you have resistence to the type of damage you spit");
+            ret.add("Speak/Read/Write: Common and Dragonic (a very old language)");
+        }
+        else if(race.equals("gnome")){
+            ret.add("you have advantage on intelegence, wisdom, and charisma saving throws against magic");
+            if(subrace.equals("forest-gnome")){
+                ret.add("you know the minor illusion cantrip");
+                ret.add("you can communicate with small or smaller beasts");
+            }
+            else if (subrace.equals("rock-gnome")){
+                ret.add("whenever you make any history checks related to magic, alchemy, or technology, add twice your proficiency bonus");
+                ret.add("you can build some cool trinkits (see page 37)");
+            }
+        }
+        else if(race.equals("half-elf")){
+            ret.add("you cant be put to sleep by magic");
+            ret.add("you have advantage against saving throws to be charmed");
+            ret.add("gain proficiency on 2 skills of your choice");
+            ret.add("Speak/Read/Wright: Common, Elvish, and one language of your choice");
+        }
+        else if(race.equals("half-orc")){
+            ret.add("you gain proficiency in intimidation");
+            ret.add("if your droped to 0hp, you can go back up to 1, you must long rest before reuse");
+            ret.add("if you crit hit, you may add one more of the weapons damage dice");
+            ret.add("Speak/Read/Wright: Common and Orc");
+        }
+        else if(race.equals("tiefling")){
+            ret.add("you have resistence to fire damage");
+            ret.add("you know the thaumaturgy cantrip, the hellish spell, and the darkness spell");
+            ret.add("Speak/Read/Wright: Common and Infernal");
+        }
+        return ret;
     }
     
     
