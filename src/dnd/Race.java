@@ -44,7 +44,7 @@ public class Race {
     {
         race = desieredRace.toLowerCase();
         subrace=desiredSubRace.toLowerCase();
-        //BUILD MATCHER YOU FUCKING BITCH FUCK YOU AND YOUR FAMILY I FUCKING HATE YOU WHY ARE WE DOING THIS SHIT
+        
     }
     
     public Race(String desieredRace)

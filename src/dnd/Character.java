@@ -184,7 +184,7 @@ public class Character {
         ret += stats.toString() +"\n";
         ret += "dark vision up to " + darkVisionDistance+ " feet\n";
         ret += "Weight: " +weight + " lbs\n";
-        ret += "Hight: " +height + "";
+        ret += "Height: " +height + "";
         return ret;
     }
     
